@@ -1,5 +1,6 @@
 import Mouse from './Mouse';
 import WebGlContents from './WebGlContents';
+
 import * as THREE from 'three';
 
 export default class Index {
@@ -10,30 +11,41 @@ export default class Index {
       document.body.clientWidth,
       window.innerHeight
     );
+
+    this.clock = new THREE.Clock(true);
     this.mouse = new Mouse(this.resolution);
     this.webGlContent = new WebGlContents(this.canvas, this.resolution);
     // this.mouse.canHover = true;
-    this.start();
+    this.init();
+    this.bind();
   }
 
-  render() {
-    this.webGlContent.render();
+  render(deltaTime) {
+    this.webGlContent.render(deltaTime);
   }
 
   animate() {
-    this.render();
+    const deltaTime = this.clock.getDelta();
+    this.time += deltaTime;
+    this.render(deltaTime);
     requestAnimationFrame(this.animate.bind(this));
   }
 
-  touchStart(event) {
-    this.mouse.touchStart(event);
-  }
-  touchMove(event) {
-    this.mouse.touchMove(event);
-  }
-  touchEnd(event) {
-    this.mouse.touchEnd(event);
-  }
+  // touchStart(event) {
+  //   this.mouse.touchStart(event);
+  //   this.webGlContent.touchStart(event);
+  // }
+  // touchMove(event) {
+  //   this.mouse.touchMove(event);
+  //   this.webGlContent.touchMove(event);
+  // }
+  // touchEnd(event) {
+  //   this.mouse.touchEnd(event);
+  //   this.webGlContent.touchEnd(event);
+  // }
+  // wheel(event) {
+  //   this.webGlContent.wheel(event);
+  // }
   resize() {
     this.resolution.set(document.body.clientWidth, window.innerHeight);
     const resolution = this.resolution;
@@ -42,17 +54,26 @@ export default class Index {
   }
 
   bind() {
-    this.canvas?.addEventListener('mousedown', this.touchStart.bind(this));
-    window.addEventListener('mousemove', this.touchMove.bind(this));
-    window.addEventListener('mouseup', this.touchEnd.bind(this));
-    this.canvas?.addEventListener('touchstart', this.touchStart.bind(this));
-    window.addEventListener('touchmove', this.touchMove.bind(this));
-    window.addEventListener('touchend', this.touchEnd.bind(this));
+    // window.addEventListener('mousedown', this.touchStart.bind(this));
+    // window.addEventListener('mousemove', this.touchMove.bind(this));
+    // window.addEventListener('mouseup', this.touchEnd.bind(this));
+    // window.addEventListener('touchstart', this.touchStart.bind(this));
+    // window.addEventListener('touchmove', this.touchMove.bind(this));
+    // window.addEventListener('touchend', this.touchEnd.bind(this));
+    // window.addEventListener('wheel', this.wheel.bind(this));
     window.addEventListener('resize', this.resize.bind(this));
   }
 
   start() {
     this.bind();
     this.animate();
+  }
+
+  async init() {
+    await this.webGlContent.load();
+
+    document.querySelector('.js-loading').classList.remove('is-active');
+
+    this.start();
   }
 }

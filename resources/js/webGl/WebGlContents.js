@@ -4,7 +4,7 @@ import Camera from './Camera';
 import { MathFunc } from '../utils/Utils';
 
 import Cow from './Cow';
-// import { Mouse } from './Mouse';
+import BackGround from './BackGround';
 
 export default class WebGlContents {
   /**
@@ -29,23 +29,24 @@ export default class WebGlContents {
       canvas,
       enableDamping: true,
     });
-    this.clock = new THREE.Clock(false);
 
     this.cow = null;
-    this.init();
+    this.background = null;
   }
 
-  async init() {
+  async load() {
     const { geometries, textures } = await this.fetchObjects();
+
     const noiseTexture = textures.noise;
 
     noiseTexture.wrapS = THREE.RepeatWrapping;
     noiseTexture.wrapT = THREE.RepeatWrapping;
 
     this.camera.init();
-    console.log(geometries);
     this.cow = new Cow(geometries.cow, textures);
+    this.background = new BackGround();
     this.scene.add(this.cow);
+    this.scene.add(this.background);
   }
 
   async fetchObjects() {
@@ -68,11 +69,21 @@ export default class WebGlContents {
     });
   }
 
-  render() {
-    const deltaTime = this.clock.getDelta();
+  render(deltaTime) {
     this.camera.update(deltaTime);
+
+    this.cow.update(deltaTime);
+
     this.renderer.render(this.scene, this.camera);
   }
+
+  touchStart(e) {}
+
+  touchMove(e) {}
+
+  touchEnd(e) {}
+
+  wheel(e) {}
 
   resize(resolution) {
     this.resolution = resolution;

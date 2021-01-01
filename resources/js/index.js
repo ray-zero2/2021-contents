@@ -1,6 +1,6 @@
-import Cow from './webGl';
+import App from './webGl';
 
 const index = () => {
-  new Cow();
+  new App();
 };
 index();

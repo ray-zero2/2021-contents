@@ -10,5 +10,9 @@ export const MathFunc = {
    *    -or-
    *    max if max < value.
    */
-  clamp: (value, min, max) => Math.min(min, Math.max(max, value)),
+  clamp: (value, min, max) => Math.max(min, Math.min(max, value)),
+
+  lerp: (value, a, b) => {
+    return (1 - value) * a + value * b;
+  },
 };
