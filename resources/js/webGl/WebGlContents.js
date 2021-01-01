@@ -54,8 +54,8 @@ export default class WebGlContents {
     const objLoader = new OBJLoader2();
 
     return await Promise.all([
-      objLoader.loadAsync('/public/model/cow.obj'),
-      textureLoader.loadAsync('/public/images/textures/noise.png'),
+      objLoader.loadAsync('./model/cow.obj'),
+      textureLoader.loadAsync('./images/textures/noise.png'),
     ]).then((response) => {
       console.log(response[0]);
       const objChildren = response[0].children;
