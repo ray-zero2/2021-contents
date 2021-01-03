@@ -25,7 +25,7 @@ void main() {
 
   vec3 finalColor = color * directionColor1 * directionColor2 + vec3(0.5);
 
-  float opacity =  vOneToZero;
+  float opacity =  1.0 - vOneToZero;
 
   gl_FragColor = vec4(finalColor, opacity);
 }

@@ -57,7 +57,6 @@ export default class WebGlContents {
       objLoader.loadAsync('./model/cow.obj'),
       textureLoader.loadAsync('./images/textures/noise.png'),
     ]).then((response) => {
-      console.log(response[0]);
       const objChildren = response[0].children;
       const { geometry: cow } = objChildren[0];
 

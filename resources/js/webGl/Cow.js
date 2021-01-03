@@ -23,7 +23,6 @@ export default class Cow extends THREE.Group {
     this.cow.geometry.elementsNeedUpdate = true;
     this.cow.rotateY(Math.PI / 2);
     this.add(this.cow);
-    console.log(this.cow);
   }
 
   createAttribute() {
