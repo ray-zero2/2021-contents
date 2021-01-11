@@ -31,6 +31,7 @@
     "glsl-matrix": "git://github.com/ykob/glsl-matrix.git",
     "glsl-noise": "^0.0.0",
     "glsl-util": "git://github.com/ykob/glsl-util.git",
+    "terser-webpack-plugin": "^5.1.1",
     "three": "^0.124.0"
   }
 }
