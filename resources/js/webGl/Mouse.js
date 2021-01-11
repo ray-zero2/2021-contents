@@ -46,18 +46,15 @@ export default class Mouse {
     const x = 'touches' in event ? event.touches[0].clientX : event.clientX;
     const y = 'touches' in event ? event.touches[0].clientY : event.clientY;
     this.position.set(x, y);
-    console.log({ x, y });
     const normalizedDeviceCoord = Mouse.transformToNormalizedDeviceCoord(
       this.position,
       this.resolution
     );
     const _x = normalizedDeviceCoord.x;
     const _y = normalizedDeviceCoord.y;
-    console.log({ _x, _y });
   }
 
   touchEnd(event) {
-    console.log(event);
     this.isTouched = false;
   }
 
