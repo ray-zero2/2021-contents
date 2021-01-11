@@ -14,7 +14,7 @@ float PI = 3.141592653589793238;
 
 void main() {
   vec2 p = uv * 2.0 - 1.0;
-   vec3 hsv = vec3(
+  vec3 hsv = vec3(
     p.y * 0.1 + 0.07,
     1.0,
     0.9

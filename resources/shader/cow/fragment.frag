@@ -14,18 +14,17 @@ varying float vOneToZero;
 float PI = 3.141592653589793238;
 
 void main() {
-  vec3 directionLight1 = vec3(1.0, 1.0, -2.0);
-  float directionColor1 = dot(normalize(directionLight1), normalize(vNormal));
+  vec3 directionalLight1 = vec3(1.0, 1.0, -2.0);
+  float directionalColor1 = dot(normalize(directionalLight1), normalize(vNormal));
 
-  vec3 directionLight2 = vec3(-1.0, 1.0, 2.0);
-  float directionColor2 = dot(normalize(directionLight2), normalize(vNormal));
+  vec3 directionalLight2 = vec3(-1.0, 1.0, 2.0);
+  float directionalColor2 = dot(normalize(directionalLight2), normalize(vNormal));
 
-  vec3 gamingColor = vec3(time * 0.75, .5, 1.0);
+  vec3 gamingColor = vec3(time * 0.2, .5, 1.0);
   vec3 color = hsvToRgb(gamingColor);
 
-  vec3 finalColor = color * directionColor1 * directionColor2 + vec3(0.5);
+  vec3 finalColor = color * directionalColor1 *directionalColor2 + vec3(0.7);
 
-  float opacity =  1.0 - vOneToZero;
 
-  gl_FragColor = vec4(finalColor, opacity);
+  gl_FragColor = vec4(finalColor, 1.0);
 }
