@@ -8,7 +8,7 @@ varying vec2 vUv;
 varying vec3 vNormal;
 varying float vOneToZero;
 
-#pragma glslify: hsvToRgb = require(glsl-util/convertHsvToRgb);
+#pragma glslify: hsv2rgb = require('../utils/hsv2Rgb');
 
 
 float PI = 3.141592653589793238;
@@ -21,9 +21,9 @@ void main() {
   float directionalColor2 = dot(normalize(directionalLight2), normalize(vNormal));
 
   vec3 gamingColor = vec3(time * 0.2, .5, 1.0);
-  vec3 color = hsvToRgb(gamingColor);
+  vec3 color = hsv2rgb(gamingColor);
 
-  vec3 finalColor = color * directionalColor1 *directionalColor2 + vec3(0.7);
+  vec3 finalColor = color * directionalColor1 * directionalColor2 + vec3(0.7);
 
 
   gl_FragColor = vec4(finalColor, 1.0);

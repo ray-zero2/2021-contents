@@ -17,6 +17,7 @@
     "prettier": "^2.2.1",
     "raw-loader": "^4.0.2",
     "regenerator-runtime": "^0.13.7",
+    "terser-webpack-plugin": "^5.1.1",
     "webpack": "^5.12.3",
     "webpack-cli": "^4.3.1"
   },
@@ -26,9 +27,6 @@
   },
   "dependencies": {
     "glsl-easings": "^1.0.0",
-    "glsl-matrix": "git://github.com/ykob/glsl-matrix.git",
-    "glsl-util": "git://github.com/ykob/glsl-util.git",
-    "terser-webpack-plugin": "^5.1.1",
     "three": "^0.124.0"
   }
 }

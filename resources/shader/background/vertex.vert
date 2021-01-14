@@ -9,7 +9,7 @@ varying vec2 vUv;
 varying vec3 vColor;
 
 
-#pragma glslify: convertHsvToRgb = require(glsl-util/convertHsvToRgb);
+#pragma glslify: hsv2rgb = require('../utils/hsv2Rgb');
 float PI = 3.141592653589793238;
 
 void main() {
@@ -19,7 +19,7 @@ void main() {
     1.0,
     0.9
   );
-  vec3 rgb = convertHsvToRgb(hsv);
+  vec3 rgb = hsv2rgb(hsv);
   vUv = uv;
   vColor = rgb;
 
