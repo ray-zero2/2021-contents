@@ -45,7 +45,7 @@ export default class WebGlContents {
     this.camera.init();
     this.cow = new Cow(geometries.cow, textures);
     this.background = new BackGround();
-    this.scene.add(this.cow);
+    this.scene.add(this.cow.mesh);
     this.scene.add(this.background);
   }
 

@@ -2,25 +2,22 @@ import * as THREE from 'three';
 import cowVertex from '../../shader/cow/vertex.vert';
 import cowFragment from '../../shader/cow/fragment.frag';
 
-export default class Cow extends THREE.Group {
+export default class Cow {
   constructor(geometry, textures) {
-    super();
-    this.name = 'cow';
     this.time = 0;
     this.isActive = false;
-    this.noiseTexture = textures.noise;
+    // this.noiseTexture = textures.noise;
     this.material = this.createMaterial();
-    this.cow = new THREE.Mesh(geometry, this.material);
+    this.mesh = new THREE.Mesh(geometry, this.material);
 
     this.createAttribute();
-    this.cow.geometry.computeVertexNormals();
-    this.cow.geometry.elementsNeedUpdate = true;
-    this.cow.rotateY(Math.PI / 2);
-    this.add(this.cow);
+    this.mesh.geometry.computeVertexNormals();
+    this.mesh.geometry.elementsNeedUpdate = true;
+    this.mesh.rotateY(Math.PI / 2);
   }
 
   createAttribute() {
-    const geometry = this.cow.geometry;
+    const geometry = this.mesh.geometry;
     const position = geometry.getAttribute('position').array;
     const positionLength = position.length;
     const delay = [];
@@ -45,9 +42,9 @@ export default class Cow extends THREE.Group {
         time: {
           value: 0,
         },
-        noiseTexture: {
-          value: this.noiseTexture,
-        },
+        // noiseTexture: {
+        //   value: this.noiseTexture,
+        // },
       },
       // wireframe: true,
     });
@@ -57,6 +54,6 @@ export default class Cow extends THREE.Group {
 
   update(deltaTime) {
     this.time += deltaTime;
-    this.cow.material.uniforms.time.value = this.time;
+    this.mesh.material.uniforms.time.value = this.time;
   }
 }
