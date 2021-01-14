@@ -23,7 +23,7 @@
   },
   "scripts": {
     "dev": "webpack --mode development --watch",
-    "build": "webpack --mode production --watch"
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "glsl-easings": "^1.0.0",

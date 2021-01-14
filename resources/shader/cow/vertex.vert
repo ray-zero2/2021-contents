@@ -31,8 +31,8 @@ void main() {
 
   mat4 rotateSelfMat = rotateMatrix4(vec3(0.0, time, 0.0));
 
-  vec4 updatePosition = rotateMat * translateMat * vec4(position, 1.0);
-  gl_Position = projectionMatrix * modelViewMatrix * rotateSelfMat * updatePosition;
+  vec4 updatedPosition = rotateMat * translateMat * vec4(position, 1.0);
+  gl_Position = projectionMatrix * modelViewMatrix * rotateSelfMat * updatedPosition;
 
   vUv = uv;
   vNormal = normal;
