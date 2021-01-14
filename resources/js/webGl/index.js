@@ -32,7 +32,6 @@ export default class Index {
   resize() {
     this.resolution.set(document.body.clientWidth, window.innerHeight);
     const resolution = this.resolution;
-    this.mouse.resize(resolution);
     this.webGlContent.resize(resolution);
   }
 
