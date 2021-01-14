@@ -6,6 +6,7 @@ export default class Camera extends THREE.PerspectiveCamera {
     super(options?.fov, options?.aspect, options?.near, options?.far);
     this.time = 0;
     this.canControl = true;
+
     if (!options?.canvas) return;
     if (!this.canControl) return;
     this.controls = new OrbitControls(this, options?.canvas);
@@ -26,6 +27,7 @@ export default class Camera extends THREE.PerspectiveCamera {
   update(deltaTime) {
     this.time += deltaTime;
 
+    if (!this.controls) return;
     this.controls.update();
   }
 }

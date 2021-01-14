@@ -5,13 +5,10 @@ import bgFrag from '../../shader/background/fragment.frag';
 
 export default class BackGround extends THREE.Mesh {
   constructor() {
-    const geometry = new THREE.SphereBufferGeometry(100, 12, 12);
+    const geometry = new THREE.SphereBufferGeometry(50, 8, 8);
     const material = new THREE.RawShaderMaterial({
       uniforms: {
         time: {
-          value: 0,
-        },
-        isTurnedOn: {
           value: 0,
         },
       },
@@ -22,13 +19,11 @@ export default class BackGround extends THREE.Mesh {
 
     super(geometry, material);
     this.time = 0;
-    this.isTurnedOn = 0;
   }
 
   update(deltaTime) {
     this.time += deltaTime;
 
     this.material.uniforms.time.value = this.time;
-    this.material.uniforms.isTurnedOn.value = this.isTurnedOn;
   }
 }
